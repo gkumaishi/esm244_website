@@ -1,0 +1,18 @@
+---
+title: "Grace Kumaishi"
+image: "grace.jpg"
+links:
+  - label: LinkedIn
+    url: "https://www.linkedin.com/in/grace-k-568957114/"
+  - label: Twitter
+    url: "https://twitter.com/gkumaishi"
+  - label: GitHub
+    url: "https://github.com/gkumaishi"
+  - label: Email
+    url: "gkumaishi@ucsb.edu"
+site: distill::distill_website
+output:
+  postcards::jolla
+---
+ 
+I am a first year master's student at the UCSB Bren School of Environmental Science and Management.

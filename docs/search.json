@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this site",
+      "description": "Some additional details about the website",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-01-16T19:55:14-08:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Grace Kumaishi",
+      "author": [],
+      "contents": "\n\n    \n    \n      \n        \n          \n            Grace Kumaishi\n          \n          \n            \n              I am a first year master’s student at the UCSB Bren School of Environmental Science and Management.\n            \n            \n              I am a first year master’s student at the UCSB Bren School of Environmental Science and Management.\n            \n          \n\n          \n            \n              \n                  \n                    \n                      LinkedIn\n                    \n                  \n                \n                                \n                  \n                    \n                      Twitter\n                    \n                  \n                \n                                \n                  \n                    \n                      GitHub\n                    \n                  \n                \n                                \n                  \n                    \n                      Email\n                    \n                  \n                \n                              \n          \n\n          \n            \n              \n                                \n                  \n                    LinkedIn\n                  \n                \n                                \n                  \n                    Twitter\n                  \n                \n                                \n                  \n                    GitHub\n                  \n                \n                                \n                  \n                    Email\n                  \n                \n                              \n            \n          \n        \n      \n    \n\n    \n    \n    ",
+      "last_modified": "2021-01-16T19:55:14-08:00"
+    }
+  ],
+  "collections": []
+}
