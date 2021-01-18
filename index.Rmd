@@ -9,7 +9,7 @@ links:
   - label: GitHub
     url: "https://github.com/gkumaishi"
   - label: Email
-    url: "gkumaishi@ucsb.edu"
+    url: "mailto:gkumaishi@ucsb.edu"
 site: distill::distill_website
 output:
   postcards::jolla
