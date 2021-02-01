@@ -10,7 +10,7 @@ date: "`r format(Sys.time(), '%B %Y')`"
 aboutme: "Marie is a Polish and naturalized-French physicist and chemist who conducts pioneering research on radioactivity."
 output: 
   vitae::markdowncv:
-    theme: kjhealy
+    theme: davewhipp
 ---
 
 ```{r setup, include=FALSE}
