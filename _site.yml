@@ -1,5 +1,5 @@
 name: "."
-title: "mfeo"
+title: "G.K."
 description: |
   mfeo
 output_dir: "docs"
@@ -9,5 +9,7 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
+    - text: "Blog"
+      href: blog.html
 output: distill::distill_article
 theme: postcards.css
