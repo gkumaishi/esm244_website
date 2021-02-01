@@ -6,14 +6,14 @@
       "description": "My name is Grace and I AM THE BEST! HAHAHA",
       "author": [],
       "contents": "\nGrace Kumaishi graduated from the University of California, Los Angeles in 2017 with a Bachelor of Science in Ecology, Behavior, and Evolution. Growing up in Santa Cruz, California, Grace always felt a deep connection to the ocean and surrounding coastal ecosystems. This love was intensified through her undergraduate career, during which she participated in two field biology courses in Australia and Southern California. Upon graduating from UCLA, Grace began working for Point Blue Conservation Science in Northern California, studying marine predator diet. She joined four at-sea research cruises in partnership with NOAA and local National Marine Sanctuaries and learned the tumultuous art of working at sea. Following her position in the marine lab, Grace continued to work for Point Blue, studying breeding seabirds on Southeast Farallon Island. While dodging furious Western Gulls and extracting tiny Pigeon Guillemot chicks from rocky crevices, Grace’s passion for marine conservation grew. She is excited to further her education at the Bren School, where she hopes to explore the dynamics between human populations and their neighboring marine ecosystems. Grace intends to specialize in Conservation Planning and Coastal Marine Resources Management, and looks forward to gaining exposure to various career paths in the field.\n\n\n\n",
-      "last_modified": "2021-01-31T19:37:03-08:00"
+      "last_modified": "2021-01-31T19:43:20-08:00"
     },
     {
       "path": "blog.html",
       "title": "Blog",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-01-31T19:37:04-08:00"
+      "last_modified": "2021-01-31T19:43:20-08:00"
     },
     {
       "path": "CV.html",
@@ -21,14 +21,14 @@
       "author": [],
       "date": "`r format(Sys.time(), '%B %Y')`",
       "contents": "\n    \n    \n    G.K.\n    \n    \n    Home\n    About\n    Blog\n    CV\n    ☰\n    \n    \n      \n        \n          \n            \n            \n            \n          \n          \n        \n        \n          \n      Home\n    \n    \n      About\n    \n    \n      Blog\n    \n    \n      CV\n    \n          \n      \n    \n    \n    \n      Grace Kumaishi\n      Master’s student\n      Bren School of Environmental Science and Management, UC Santa Barbara\n\n      \n      |\n       +1 831-212-2293 |\n      \n       gkumaishi@ucsb.edu |\n      \n      \n      \n      \n\n      \n      Some stuff about me\n      I poisoned myself doing research.\n      I was the first woman to win a Nobel prize\n      I was the first person and only woman to win a Nobel prize in two different sciences.\n      \n      \n      Education\n      \n      1889-91 Warsaw, Poland Informal studies (Flying University)\n      \n      \n      1893 Paris, France Master of Physics (Sorbonne Université)\n      \n      \n      1894 Paris, France Master of Mathematics (Sorbonne Université)\n      \n      \n      \n      Nobel Prizes\n      \n      1903 Nobel Prize in Physics (Awarded for her work on radioactivity with Pierre Curie and Henri Becquerel)\n      \n      \n      1911 Nobel Prize in Chemistry (Awarded for the discovery of radium and polonium)\n      \n      \n      \n      Publications\n      \n      \n      1. O’Hara-Wild, M., & Hyndman, R. (2021). Vitae: Curriculum vitae for r markdown. https://CRAN.R-project.org/package=vitae\n      \n      \n      2. Müller, K., & Wickham, H. (2020). Tibble: Simple data frames. https://CRAN.R-project.org/package=tibble\n      \n      \n      \n    \n  \n\n\n\n\n",
-      "last_modified": "2021-01-31T19:37:05-08:00"
+      "last_modified": "2021-01-31T19:43:21-08:00"
     },
     {
       "path": "index.html",
       "title": "Grace Kumaishi",
       "author": [],
       "contents": "\n\n          \n          \n          G.K.\n          \n          \n          Home\n          About\n          Blog\n          CV\n          ☰\n          \n          \n      \n        \n          \n            \n              \n            \n              Grace Kumaishi\n            \n            \n              \n                \n                    \n                      \n                        LinkedIn\n                      \n                    \n                  \n                                    \n                    \n                      \n                        Twitter\n                      \n                    \n                  \n                                    \n                    \n                      \n                        GitHub\n                      \n                    \n                  \n                                    \n                    \n                      \n                        Email\n                      \n                    \n                  \n                                  \n            \n          \n        \n        \n        \n          \n            Hey! My name is Grace. I’m a first year master’s student at UC Santa Barbara’s Bren School of Environmental Science and Management.\n          \n        \n      \n    \n\n    \n      \n        \n          \n            \n              \n            \n              Grace Kumaishi\n            \n            \n              \n                \n                                    \n                    \n                      LinkedIn\n                    \n                  \n                                    \n                    \n                      Twitter\n                    \n                  \n                                    \n                    \n                      GitHub\n                    \n                  \n                                    \n                    \n                      Email\n                    \n                  \n                                  \n              \n            \n            \n              Hey! My name is Grace. I’m a first year master’s student at UC Santa Barbara’s Bren School of Environmental Science and Management.\n            \n        \n      \n    \n\n    \n    \n    ",
-      "last_modified": "2021-01-31T19:37:05-08:00"
+      "last_modified": "2021-01-31T19:43:21-08:00"
     }
   ],
   "collections": ["posts/posts.json"]
