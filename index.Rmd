@@ -15,4 +15,4 @@ output:
   postcards::trestles
 ---
 
-Hey! My name is Grace. I'm a first year master's student at UC Santa Barbara's Bren School of Environmental Science and Management.   
+Hi! My name is Grace and I'm a first year master's student at UC Santa Barbara's Bren School of Environmental Science and Management. When I'm not stuck behind a screen, I enjoy experimenting in the kitchen with new cuisines, knitting hats for anyone who will wear them, and exploring new outdoor spaces in and around California! I am interested in furthering my skills in data science and visualization, as well as exploring various careers in the field of conservation and marine science. 
