@@ -56,3 +56,10 @@ tribble(
   detailed_entries(Degree, Year, Institution, Where)
 ```
 
+## Skills and Certifications
+
+**Software:** R, R Studio, QGIS, ImageJ, Microsoft Office Suite
+
+**Certifications:** Open Water Diver (PADI), First Aid & CPR (American Heart Association)
+
+**Languages:** English, Conversational Spanish
