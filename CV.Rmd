@@ -24,8 +24,8 @@ library(vitae)
 library(tibble)
 tribble(
   ~ Degree, ~ Year, ~ Institution, ~ Where,
-  "Master of Environmental Science and Management", "2020-2022", "Bren School of Environmental Science and Management, UCSB", "Santa Barbara, CA",
-  "Bachelor of Science in Ecology, Behavior, and Evolution", "2013-2017", "University of California, Los Angeles (UCLA)", "Los Angeles, CA"
+  "Bren School of Environmental Science and Management, UCSB", "Expected 2022", "Santa Barbara, CA", "Master of Environmental Science and Management,",
+  "University of California, Los Angeles (UCLA)", "2013-2017", "Los Angeles, CA", "Bachelor of Science in Ecology, Behavior, and Evolution,"
 ) %>% 
   detailed_entries(Degree, Year, Institution, Where)
 ```
@@ -34,24 +34,14 @@ tribble(
 
 ```{r}
 tribble(
-  ~Year, ~Type, ~Desc,
-  1903, "Physics", "Awarded for her work on radioactivity with Pierre Curie and Henri Becquerel",
-  1911, "Chemistry", "Awarded for the discovery of radium and polonium"
+  ~ Degree, ~ Year, ~ Institution, ~ Where,
+  "Common Murre Restoration Project, Humboldt State University", "4/2020 - 8/2020", "Pacifica, CA", "Wildlife Technician,",
+  "Point Blue Conservation Science", "4/2019 - 3/2020", "Petaluma, CA", "Farallon Program Research Intern,",
+  "Point Blue Conservation Science", "9/2017 - 1/2019", "Petaluma, CA", "Marine Laboratory Research Assistant,",
+    "UCLA Department of Ecology, Behavior, and Evolution", "7/2017", "Los Angeles, CA", "Laboratory Research Assistant,",
+    "UCLA Department of Ecology, Behavior, and Evolution", "4/2016 - 3/2017", "Los Angeles, CA", "Undergraduate Research Assistant,"
 ) %>% 
-  brief_entries(
-    glue::glue("Nobel Prize in {Type}"),
-    Year, 
-    Desc
-  )
+  detailed_entries(Degree, Year, Institution, Where)
 ```
 
-## Publications
-
-```{r}
-library(dplyr)
-knitr::write_bib(c("vitae", "tibble"), "packages.bib")
-
-bibliography_entries("packages.bib") %>%
-  arrange(desc(author$family), issued)
-```
 
