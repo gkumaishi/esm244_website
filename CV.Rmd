@@ -44,4 +44,15 @@ tribble(
   detailed_entries(Degree, Year, Institution, Where)
 ```
 
+## Volunteer Experience
+
+```{r}
+tribble(
+  ~ Degree, ~ Year, ~ Institution, ~ Where,
+  "Oceans 360, Wildlife Conservation Network Expo", "10/2018 - 10/2019", "San Francisco, CA", "Interpreter,",
+  "Surin Project", "8/2014", "Surin, Thailand", "Sanctuary Volunteer,",
+  "Seymour Center at Long Marine Lab, UCSC", "3/2011 - 4/2013", "Santa Cruz, CA", "Exhibit Guide,"
+) %>% 
+  detailed_entries(Degree, Year, Institution, Where)
+```
 
