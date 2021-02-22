@@ -97,17 +97,17 @@ ggplot(data = top_5_words, aes(x = word, y = n)) +
 
 **Figure 1:** Column graphs faceted by chapter to display top 5 most commonly used words in Louisa May Alcott's *Little Women* part 1 (chapters 1-23). Stop words such as "the", "is", and "and" were removed in addition to character names. 
 
-### 2) Top 40 words in *Little Women* chapter 5: "Being Neighborly"
+### 2) Top 35 words in *Little Women* chapter 5: "Being Neighborly"
 
 ```{r, fig.align = "center"}
-# Select top 40 words for chapter 5
-ch5_top40 <- nonstop_counts %>% 
+# Select top 35 words for chapter 5
+ch5_top35 <- nonstop_counts %>% 
   filter(chapter == 5) %>% 
   arrange(-n) %>% 
-  slice(1:40)
+  slice(1:35)
 
 # Create wordcloud
-ch5_cloud <- ggplot(data = ch5_top40, aes(label = word)) +
+ch5_cloud <- ggplot(data = ch5_top35, aes(label = word)) +
   geom_text_wordcloud(aes(color = n, size = n), shape = "circle") +
   scale_size_area(max_size = 10) +
   scale_color_gradientn(colors = c("goldenrod2", "tomato2", "violetred2")) +
