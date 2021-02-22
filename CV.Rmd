@@ -56,6 +56,10 @@ tribble(
   detailed_entries(Degree, Year, Institution, Where)
 ```
 
+## Presentations
+
+**Grace Kumaishi**, Pete Warzybok, Michael E. Johns. (2020) Pacific Seabird Group 47th Annual Meeting; Portland, Oregon. **Oral**. Associations between annual changes in chick diet and breeding success of pigeon guillemots on Southeast Farallon Island. 
+
 ## Skills and Certifications
 
 **Software:** R, R Studio, QGIS, ImageJ, Microsoft Office Suite
