@@ -1,0 +1,80 @@
+---
+title: "Working with raster data"
+description: |
+  creating a raster of cetacean species richness off the California coast 
+author:
+  - name: Grace Kumaishi
+date: 02-22-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: Code
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(raster)
+library(tidyverse)
+library(sf)
+library(here)
+library(janitor)
+library(rnaturalearth)
+```
+
+```{r}
+# Read in the data
+cetaceans <- list.files(path = here("data", "ca_cetaceans"), full.names = TRUE)
+
+# Stack all species
+cetaceans_stack <- raster::stack(cetaceans)
+
+  #plot(cetaceans_stack)
+
+  #cetaceans_stack <- raster::aggregate(cetaceans_stack, fact = 1, fun = mean)
+  #plot(cetaceans_stack, col = hcl.colors(n = 100, palette = "Blues 2"))
+
+cetaceans_stack_table <- rasterToPoints(cetaceans_stack) # convert raster to points
+
+cetaceans_stack_df <- as.data.frame(cetaceans_stack_table) # convert points to a data frame
+  
+# Create tidy dataframe
+cetaceans_stack_tidy <- cetaceans_stack_df %>% 
+  pivot_longer(cols = c("Balaenoptera_acutorostrata":"Ziphius_cavirostris"),
+    names_to = "species",
+    values_to = "probability") 
+
+spp_richness <- cetaceans_stack_tidy %>% 
+  mutate(presence = case_when(
+    probability > .6 ~ 1,
+    probability <= .6 ~ 0
+  )) %>% 
+  filter(presence == 1) %>% 
+  group_by(x, y) %>% 
+  count(presence)
+```
+
+```{r echo = T, results = "hide"}
+states110 <- ne_download(scale = 110, type = "coastline", category = "physical", returnclass = "sf")
+```
+
+### Raster of species richness of cetaceans off the California coast:
+
+```{r, fig.align = "center"}
+ggplot() +
+  geom_raster(data = spp_richness, aes(x = x, y = y, fill = n)) +
+  geom_sf(data = states110) +
+  coord_sf(xlim = c(-125, -115), ylim = c(32, 38)) +
+  scale_fill_gradientn(colors = c("lightgray", "lightskyblue", "royalblue4")) +
+  labs(x = "Longitude",
+       y = "Latitude",
+       fill = "Species richness") +
+  theme_light()
+```
+
+**Map 1:** This map displays a raster of species richness of 35 cetacean species off the California coast. Raster of species richness was created using probability of occurrence data, filtering for a probability threshold above 0.6 for species classified as "present". Darker cells reflect areas with higher species richness. (Data: Kaschner et al. 2016).
+
+### Citation:
+Raster layers courtesty of: [Kaschner, K., Rius-Barile, J., Kesner-Reyes, K., Garilao, C., Kullander, S., Rees, T., & Froese, R. (2016). AquaMaps: Predicted range maps for aquatic species.](https://www.aquamaps.org/)
+
+Coastline layer courtesy of: [Andy South (2017). rnaturalearth: World Map Data from Natural Earth. R
+  package version 0.1.0. https://CRAN.R-project.org/package=rnaturalearth](https://CRAN.R-project.org/package=rnaturalearth)
