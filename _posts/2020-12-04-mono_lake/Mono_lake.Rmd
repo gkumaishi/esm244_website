@@ -1,0 +1,137 @@
+---
+title: "Mono Lake vizualization"
+description: |
+  exploring Mono Lake water levels over time
+author:
+  - name: Grace Kumaishi
+date: 12-04-2020
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: Code
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(here)
+library(janitor)
+library(plotly)
+library(ggplot2)
+```
+
+```{r}
+# Read in the data
+
+mono_lake <- read.csv(here("data", "mono_lake_annual_levels.csv"), skip = 5) %>% 
+  clean_names() %>% 
+  rename(lake_level_ft = lake_level_feet_above_sea_level)
+```
+
+### Assignment: create a beautiful visualization: 
+```{r, fig.align = "center", fig.width = 9}
+# Create a beautiful data visualization of lake levels 
+
+mono_lake_levels <- #store ggplot to make plot interactive
+
+ggplot(mono_lake) +
+  geom_line(aes(x = year, 
+                y = lake_level_ft), 
+            color = "skyblue4", 
+            size = .5) +
+  geom_ribbon(aes(x = year, 
+                  y = lake_level_ft, 
+                  xmin = 1850, 
+                  xmax = 2017, 
+                  ymin = 6340, 
+                  ymax = lake_level_ft), 
+              fill = "skyblue2", 
+              alpha = .5) +
+  labs(y = "Lake level (ft)",
+       x = "Year") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_x_continuous(breaks = c(1850, 1875, 1900, 1925, 1950, 1975, 2000)) +
+  geom_segment(aes(x = 1850,
+                   xend = 2017,
+                   y = 6377,
+                   yend = 6377), 
+             color = "darkorange", 
+             size = .3) +
+  geom_segment(aes(x = 1850,
+                   xend = 2017,
+                   y = 6360,
+                   yend = 6360), 
+             color = "darkorange2", 
+             size = .3) +
+  geom_segment(aes(x = 1850,
+                   xend = 2017,
+                   y = 6350,
+                   yend = 6350), 
+             color = "darkorange4", 
+             size = .3) +
+  annotate("text", 
+           x = 1878, 
+           y = 6379, 
+           label = "Land bridge emerges (6,377 ft)", 
+           color = "black", 
+           size = 3, 
+           fontface = "bold") +
+  annotate("text", 
+           x = 1881, 
+           y = 6362, 
+           label = "Salinity reaches 120 g/L (6,360 ft)", 
+           color = "black", 
+           size = 3, 
+           fontface = "bold") +
+  annotate("text", 
+           x = 1881, 
+           y = 6352, 
+           label = "Salinity reaches 150 g/L (6,350 ft)", 
+           color = "black", 
+           size = 3, 
+           fontface = "bold") +
+  annotate("point", 
+           x = c(1941, 1978, 1983, 1994),
+           y = c(6417, 6375, 6378.6, 6374.6),
+           alpha = 0.8,
+           color = "gray25") +
+  annotate("segment",
+           x = c(1941, 1978, 1983, 1994),
+           xend = c(1941, 1978, 1983, 1994),
+           y = c(6425, 6383, 6388.6, 6384.6),
+           yend = c(6417, 6375, 6378.6, 6374.6),
+           color = "gray25",
+           size = .2) +
+  annotate("text",
+           x = 1941,
+           y = 6427,
+           label = "1941",
+           color = "black",
+           size = 3) +
+  annotate("text",
+           x = 1978,
+           y = 6385,
+           label = "1978",
+           color = "black",
+           size = 3) +
+  annotate("text",
+           x = 1983,
+           y = 6390.6,
+           label = "1983",
+           color = "black",
+           size = 3) +
+  annotate("text",
+           x = 1994,
+           y = 6386.6,
+           label = "1994",
+           color = "black",
+           size = 3) 
+
+ggplotly(mono_lake_levels) #This will make the graph interactive, works in knitted doc!! 
+```
+
+**Figure 1:** Annual lake level measurements (feet above sea level) between 1850 and 2017 collected from the [Mono Basin Clearinghouse](https://www.monobasinresearch.org/). Lake levels that pose significance to nesting bird populations are noted with horizontal lines. At 6,377 ft above sea level, a land bridge emerges that allows predators access to crucial California Gull nesting habitat. Salinity reaches 120 g/L at 6,360 ft above sea level and 150 g/L at 6,350 feet above sea level, resulting in decreased food availability for Eared Grebes and California Gulls. Notable years are annotated on the graph (1941: LADWP began diverting water from Mono Lake's tributary streams; 1978: Mono Lake Committee formed; 1983: California Supreme Court decision; 1994: State Water Board decision). Further information about these dates and more can be found on the Mono Lake [website](https://www.monolake.org/learn/aboutmonolake/savingmonolake/#water-diversions-almost-destroyed-mono-lake).  Data: National Research Council (1987).
+
+### Citation:
+[National Research Council. 1987. The Mono Basin Ecosystem: Effects of Changing Lake Level. Washington, DC: The National Academies Press. https://doi.org/10.17226/1007.](https://www.nap.edu/catalog/1007/the-mono-basin-ecosystem-effects-of-changing-lake-level)

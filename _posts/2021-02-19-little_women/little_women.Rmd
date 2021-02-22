@@ -1,0 +1,169 @@
+---
+title: "Text mining and analysis"
+description: |
+  of Louisa May Alcott's 'Little Women' 
+author:
+  - name: Grace Kumaishi
+date: 02-19-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: Code
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(tidytext)
+library(textdata)
+library(pdftools)
+library(ggwordcloud)
+library(here)
+```
+
+```{r}
+# Read in the data
+little_women_text <- pdf_text(here("data", "little_women.pdf")) 
+
+# Wrangling!
+little_women_tidy <- data.frame(little_women_text) %>% 
+  mutate(text_full = str_split(little_women_text, pattern = "\\n")) %>% 
+  unnest(text_full) %>% 
+  mutate(text_full = str_trim(text_full)) 
+
+little_women_df <- little_women_tidy %>% 
+  slice(-(1:101)) %>% 
+  mutate(chapter = case_when(
+    str_detect(text_full, pattern = "CHAPTER") ~text_full,
+    TRUE ~ NA_character_
+  )) %>% 
+  fill(chapter) %>% 
+  mutate(text_full = str_squish(text_full)) %>% # Get rid of excess inside space in text_full
+  mutate(text_full = str_trim(text_full)) %>% # Get rid of excess outside space
+  mutate(chapter = str_squish(chapter)) %>% 
+  mutate(chapter = str_remove_all(as.character(chapter), "\\.")) %>% # remove "." after roman numerals
+  separate(col = chapter, into = c("ch", "no"), sep = " ") %>% 
+  mutate(chapter = as.numeric(as.roman(no))) %>% 
+  replace_na(list(chapter = 18)) # Replace NAs with 18
+
+# Get word counts by chapter
+little_women_tokens <- little_women_df %>% 
+  unnest_tokens(word, text_full) %>% 
+  dplyr::select(-little_women_text)
+
+little_women_wordcount <- little_women_tokens %>% 
+  count(chapter, word)
+
+# Remove all stop words and other unwanted names/words
+little_women_nonstop_words <- little_women_tokens %>% 
+  anti_join(stop_words) %>% 
+  filter(word != "jo",
+         word != "jo's",
+         word != "beth",
+         word != "amy",
+         word != "meg",
+         word != "laurie",
+         word != "laurence",
+         word != "11",
+         word != "n't",
+         word != "ve",
+         word != "ing")
+
+nonstop_counts <- little_women_nonstop_words %>% 
+  count(chapter, word)
+```
+
+### 1) Top 5 words in *Little Women* part 1
+
+```{r, fig.align = "center"}
+# Find top 5 words for part 1
+top_5_words <- nonstop_counts %>% 
+  filter(chapter == 1:23) %>% # filter for first 23 chapters (part 1)
+  group_by(chapter) %>% 
+  arrange(-n) %>% 
+  slice(1:5)
+
+# Visualize
+ggplot(data = top_5_words, aes(x = word, y = n)) +
+  geom_col(fill = "aquamarine3") +
+  facet_wrap(~chapter, scales = "free") +
+  coord_flip() +
+  theme_minimal() +
+  theme(text = element_text(size = 9),
+        plot.title = element_text(hjust = .5, size = 14)) +
+  labs(x = "Word",
+      y = "Count")
+```
+
+**Figure 1:** Column graphs faceted by chapter to display top 5 most commonly used words in Louisa May Alcott's *Little Women* part 1 (chapters 1-23). Stop words such as "the", "is", and "and" were removed in addition to character names. 
+
+### 2) Top 40 words in *Little Women* chapter 5: "Being Neighborly"
+
+```{r, fig.align = "center"}
+# Select top 40 words for chapter 5
+ch5_top40 <- nonstop_counts %>% 
+  filter(chapter == 5) %>% 
+  arrange(-n) %>% 
+  slice(1:40)
+
+# Create wordcloud
+ch5_cloud <- ggplot(data = ch5_top40, aes(label = word)) +
+  geom_text_wordcloud(aes(color = n, size = n), shape = "circle") +
+  scale_size_area(max_size = 10) +
+  scale_color_gradientn(colors = c("goldenrod2", "tomato2", "violetred2")) +
+  theme_minimal() 
+
+ch5_cloud
+```
+
+**Figure 2:** Wordcloud displaying the top 50 words used in *Little Women* chapter 5: "Being Neighborly". Similar to figure 1, stop words and main character names were removed to provide a more interesting assortment of words. 
+
+### 3) Sentiment analysis of *Little Women* parts 1 & 2 using the AFINN lexicon
+
+```{r, fig.align = "center"}
+# Sentiment analysis using afinn lexicon
+afinn_pos <- get_sentiments("afinn") %>% # check out all words that are scored as "positive" or above 2
+  filter(value > 2)
+
+little_women_afinn <- little_women_nonstop_words %>% 
+  inner_join(get_sentiments("afinn"))
+
+afinn_counts <- little_women_afinn %>% 
+  count(chapter, value) 
+
+afinn_means <- little_women_afinn %>% 
+  group_by(chapter) %>% 
+  summarize(mean_afinn = mean(value))
+
+ggplot(data = afinn_means,
+       aes(x = chapter, y = mean_afinn)) +
+  geom_col(fill = "cornflowerblue") +
+  coord_flip() +
+  theme_minimal() +
+  labs(y = "Mean sentiments",
+       x = "Chapter")
+```
+
+**Figure 3:** Column graph showcasing the average sentiments of *Little Women* parts 1 & 2 (chapters 1-47) using the AFINN lexicon. Mean sentiment values less than zero indicate that on average, the words used in a particular chapter had more negative connotations than those with mean sentiments greater than zero. 
+
+```{r}
+# Sentiment analysis using NRC lexicon
+#little_women_nrc <- little_women_nonstop_words %>% 
+  #inner_join(get_sentiments("nrc"))
+
+#little_women_nrc_counts <- little_women_nrc %>% 
+  #count(chapter, sentiment)
+
+#ggplot(data = little_women_nrc_counts, aes(x = sentiment, y = n)) +
+  #geom_col() +
+  #facet_wrap(~chapter) +
+  #coord_flip()
+```
+
+### Citation: 
+[Alcott, Louisa May, 1832-1888. Little Women. Melbourne; London; Baltimore: Penguin Books, 1953](https://archive.org/details/littlewomenormeg00alcoiala/page/216/mode/2up)
+
+
+
+
+
