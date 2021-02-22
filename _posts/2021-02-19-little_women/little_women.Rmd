@@ -116,7 +116,7 @@ ch5_cloud <- ggplot(data = ch5_top35, aes(label = word)) +
 ch5_cloud
 ```
 
-**Figure 2:** Wordcloud displaying the top 50 words used in *Little Women* chapter 5: "Being Neighborly". Similar to figure 1, stop words and main character names were removed to provide a more interesting assortment of words. 
+**Figure 2:** Wordcloud displaying the top 35 words used in *Little Women* chapter 5: "Being Neighborly". Similar to figure 1, stop words and main character names were removed to provide a more interesting assortment of words. 
 
 ### 3) Sentiment analysis of *Little Women* parts 1 & 2 using the AFINN lexicon
 
