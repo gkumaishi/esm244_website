@@ -1,16 +1,5 @@
 ---
-title: CV
-name: Grace
-surname: Kumaishi
-position: "Master's student"
-address: "Bren School of Environmental Science and Management, UC Santa Barbara"
-phone: +1 831-212-2293
-email: "gkumaishi@ucsb.edu"
-date: "`r format(Sys.time(), '%B %Y')`"
-aboutme: "Marie is a Polish and naturalized-French physicist and chemist who conducts pioneering research on radioactivity."
-output: 
-  vitae::markdowncv:
-    theme: davewhipp
+title: "CV"
 ---
 
 ```{r setup, include=FALSE}
@@ -18,56 +7,6 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(vitae)
 ```
 
-```{r echo = FALSE, message=FALSE, fig.align='center', fig.pos='H', out.width = "800px", out.height = "1100px"}
+```{r echo = FALSE, message=FALSE, fig.align='center', fig.pos='H', out.width = "1200px", out.height = "1650px"}
 knitr::include_graphics("./CV/cv.pdf")
 ```
-
-## Education
-
-```{r}
-library(tibble)
-tribble(
-  ~ Degree, ~ Year, ~ Institution, ~ Where,
-  "Bren School of Environmental Science and Management, UCSB", "Expected 2022", "Santa Barbara, CA", "Master of Environmental Science and Management,",
-  "University of California, Los Angeles (UCLA)", "2013-2017", "Los Angeles, CA", "Bachelor of Science in Ecology, Behavior, and Evolution,"
-) %>% 
-  detailed_entries(Degree, Year, Institution, Where)
-```
-
-## Research Experience
-
-```{r}
-tribble(
-  ~ Degree, ~ Year, ~ Institution, ~ Where,
-  "Common Murre Restoration Project, Humboldt State University", "4/2020 - 8/2020", "Pacifica, CA", "Wildlife Technician,",
-  "Point Blue Conservation Science", "4/2019 - 3/2020", "Petaluma, CA", "Farallon Program Research Intern,",
-  "Point Blue Conservation Science", "9/2017 - 1/2019", "Petaluma, CA", "Marine Laboratory Research Assistant,",
-    "UCLA Department of Ecology, Behavior, and Evolution", "7/2017", "Los Angeles, CA", "Laboratory Research Assistant,",
-    "UCLA Department of Ecology, Behavior, and Evolution", "4/2016 - 3/2017", "Los Angeles, CA", "Undergraduate Research Assistant,"
-) %>% 
-  detailed_entries(Degree, Year, Institution, Where)
-```
-
-## Volunteer Experience
-
-```{r}
-tribble(
-  ~ Degree, ~ Year, ~ Institution, ~ Where,
-  "Oceans 360, Wildlife Conservation Network Expo", "10/2018 - 10/2019", "San Francisco, CA", "Interpreter,",
-  "Surin Project", "8/2014", "Surin, Thailand", "Sanctuary Volunteer,",
-  "Seymour Center at Long Marine Lab, UCSC", "3/2011 - 4/2013", "Santa Cruz, CA", "Exhibit Guide,"
-) %>% 
-  detailed_entries(Degree, Year, Institution, Where)
-```
-
-## Presentations
-
-**Grace Kumaishi**, Pete Warzybok, Michael E. Johns. (2020) Pacific Seabird Group 47th Annual Meeting; Portland, Oregon. **Oral**. Associations between annual changes in chick diet and breeding success of pigeon guillemots on Southeast Farallon Island. 
-
-## Skills and Certifications
-
-**Software:** R, R Studio, QGIS, ImageJ, Microsoft Office Suite
-
-**Certifications:** Open Water Diver (PADI), First Aid & CPR (American Heart Association)
-
-**Languages:** English, Conversational Spanish
