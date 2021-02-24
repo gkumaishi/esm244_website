@@ -28,11 +28,11 @@ mono_lake <- read.csv(here("data", "mono_lake_annual_levels.csv"), skip = 5) %>%
   rename(lake_level_ft = lake_level_feet_above_sea_level)
 ```
 
-### Assignment: create a beautiful visualization: 
+### Create a beautiful visualization of lake levels over time: 
 ```{r, fig.align = "center", fig.width = 9}
 # Create a beautiful data visualization of lake levels 
 
-mono_lake_levels <- #store ggplot to make plot interactive
+#mono_lake_levels <- #store ggplot to make plot interactive
 
 ggplot(mono_lake) +
   geom_line(aes(x = year, 
@@ -128,7 +128,7 @@ ggplot(mono_lake) +
            color = "black",
            size = 3) 
 
-ggplotly(mono_lake_levels) #This will make the graph interactive, works in knitted doc!! 
+#ggplotly(mono_lake_levels) #This will make the graph interactive, works in knitted doc!! 
 ```
 
 **Figure 1:** Annual lake level measurements (feet above sea level) between 1850 and 2017 collected from the [Mono Basin Clearinghouse](https://www.monobasinresearch.org/). Lake levels that pose significance to nesting bird populations are noted with horizontal lines. At 6,377 ft above sea level, a land bridge emerges that allows predators access to crucial California Gull nesting habitat. Salinity reaches 120 g/L at 6,360 ft above sea level and 150 g/L at 6,350 feet above sea level, resulting in decreased food availability for Eared Grebes and California Gulls. Notable years are annotated on the graph (1941: LADWP began diverting water from Mono Lake's tributary streams; 1978: Mono Lake Committee formed; 1983: California Supreme Court decision; 1994: State Water Board decision). Further information about these dates and more can be found on the Mono Lake [website](https://www.monolake.org/learn/aboutmonolake/savingmonolake/#water-diversions-almost-destroyed-mono-lake).  Data: National Research Council (1987).
